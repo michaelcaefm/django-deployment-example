@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand navbar-light bg-light">
+      <a class="navbar-brand" href="{% url 'index' %}">DJANGO</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'mc_app:register' %}">Register</a></li>
+
+          {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'user_logout' %}">Logout</a></li>
+
+          {% else %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'mc_app:user_login' %}">Login</a></li>
+
+          {% endif %}
+
+        </ul>
+      </div>
+    </nav>
+
+    <div>
+      {% block body_block %}
+      {% endblock %}
+    </div>
+
+  </body>
+</html>
